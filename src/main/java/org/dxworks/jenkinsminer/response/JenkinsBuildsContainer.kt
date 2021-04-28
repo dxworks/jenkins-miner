@@ -5,5 +5,5 @@ import com.google.api.client.util.Key
 
 class JenkinsBuildsContainer: GenericJson() {
     @Key
-    var builds: List<JenkinsBuild> = emptyList()
+    var builds: List<JenkinsBuildReference> = emptyList()
 }
