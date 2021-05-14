@@ -12,8 +12,10 @@ internal class JenkinsClientIT {
 
         assertNotNull(build)
         assertEquals("Kafka » kafka-2.4-jdk8 #18", build.name)
+        assertEquals("kafka-2.4-jdk8", build.parentName)
         assertEquals(18, build.id)
         assertEquals(39223480, build.duration)
+        assertEquals("2020-11-21T20:00:08.611", build.timestamp)
         assertEquals("SUCCESS", build.result)
         assertEquals("Started by an SCM change", build.event)
         assertEquals("cb60abc1df281b16eb359be0e6df925932e33418", build.commitId)

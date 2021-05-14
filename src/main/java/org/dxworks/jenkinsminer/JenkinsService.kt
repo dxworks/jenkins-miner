@@ -3,9 +3,7 @@ package org.dxworks.jenkinsminer
 import com.google.api.client.http.GenericUrl
 import com.google.api.client.http.HttpRequestInitializer
 import org.dxworks.jenkinsminer.response.JenkinsBuildsContainer
-import org.dxworks.jenkinsminer.response.JenkinsJobContainer
 import org.dxworks.utils.java.rest.client.RestClient
-import java.util.*
 
 class JenkinsService(private val path: String, httpRequestInitializer: HttpRequestInitializer? = null) :
     RestClient(path, httpRequestInitializer) {

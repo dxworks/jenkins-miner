@@ -3,6 +3,9 @@ package org.dxworks.jenkinsminer.response
 import com.google.api.client.json.GenericJson
 import com.google.api.client.util.ArrayMap
 import com.google.api.client.util.Key
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
 
 class JenkinsBuild: GenericJson() {
     @Key("fullDisplayName")
@@ -13,6 +16,13 @@ class JenkinsBuild: GenericJson() {
 
     @Key("duration")
     var duration: Int? = null
+
+    @Key("timestamp")
+    var timestamp_miliseconds: Long = 0
+
+    val timestamp: String? by lazy{
+        LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp_miliseconds), ZoneId.systemDefault()).toString()
+    }
 
     @Key("result")
     var result: String? = null
@@ -37,6 +47,10 @@ class JenkinsBuild: GenericJson() {
 
     @Key("url")
     var url: String? = null
+
+    val parentName: String? by lazy {
+        url?.substringAfterLast("job/")?.substringBefore("/") ?: null
+    }
 
     @Key("actions")
     var actions: List<GenericJson> = emptyList()
