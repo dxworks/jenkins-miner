@@ -36,13 +36,15 @@ class JenkinsBuild: GenericJson() {
         ((actions.find {
             it["_class"] == "hudson.plugins.git.util.BuildData"
         }
-            ?.get("lastBuiltRevision") as ArrayMap<String, Any>)?.get("branch") as ArrayList<ArrayMap<String, String>>).first()["SHA1"];
+            ?.get("lastBuiltRevision") as? ArrayMap<String, Any>)?.get("branch") as? ArrayList<ArrayMap<String, String>>)?.first()
+            ?.get("SHA1");
     }
     val branch: String? by lazy {
         ((actions.find {
             it["_class"] == "hudson.plugins.git.util.BuildData"
         }
-            ?.get("lastBuiltRevision") as ArrayMap<String, Any>)?.get("branch") as ArrayList<ArrayMap<String, String>>).first()["name"];
+            ?.get("lastBuiltRevision") as? ArrayMap<String, Any>)?.get("branch") as? ArrayList<ArrayMap<String, String>>)?.first()
+            ?.get("name");
     }
 
     @Key("url")
@@ -55,5 +57,5 @@ class JenkinsBuild: GenericJson() {
     @Key("actions")
     var actions: List<GenericJson> = emptyList()
 
-    override fun toString(): String = " $id: event : $event, commitId: $commitId, branch: $branch"
+    override fun toString(): String = " $name: event : $event, commitId: $commitId, branch: $branch"
 }
