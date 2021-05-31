@@ -1,7 +1,9 @@
 package org.dxworks.jenkinsminer
 
 import com.google.api.client.http.GenericUrl
+import com.google.api.client.json.GenericJson
 import com.google.api.client.http.HttpRequestInitializer
+import org.dxworks.jenkinsminer.response.JenkinsBuild
 import org.dxworks.jenkinsminer.response.JenkinsBuildsContainer
 import org.dxworks.utils.java.rest.client.RestClient
 
